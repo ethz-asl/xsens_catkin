@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package>
+  <name>xsens_catkin</name>
+  <version>0.0.1</version> 
+  <description>xsens_catkin</description>
+  <maintainer email="mathias.buerki@mavt.ethz.ch">Mathias Buerki</maintainer>
+  <author>Mathias Buerki</author>
+  <license>New BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>catkin_simple</buildtool_depend>
+</package>
