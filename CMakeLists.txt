@@ -11,17 +11,18 @@ include(ExternalProject)
 
 file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include/xsens)
 ExternalProject_Add(${PROJECT_NAME}_src
-  URL http://www.xsens.com/download/MT/4.2.1/mfmsdk_mtm_mtsdk_linux_4.2.1_beta.zip
+  URL http://www.xsens.com/download/MT/4.6/MT_Software_Suite_Linux_4.6.tar.gz
   PATCH_COMMAND ""
   UPDATE_COMMAND ""
   BUILD_IN_SOURCE 1
-  CONFIGURE_COMMAND cd ../${PROJECT_NAME}_src && tar -xzvf mtsdk_linux_69.tar.gz
-  BUILD_COMMAND cd ../${PROJECT_NAME}_src/mtsdk/shared_object && make
+  CONFIGURE_COMMAND cd ../${PROJECT_NAME}_src && chmod +x mtsdk_linux_4.6.sh
+    && mkdir -p mtsdk && echo mtsdk | sh mtsdk_linux_4.6.sh
+  BUILD_COMMAND ""
   INSTALL_COMMAND mkdir -p ${CATKIN_DEVEL_PREFIX}/include/xsens
-    && cp -r ../${PROJECT_NAME}_src/mtsdk/shared_object/include/xsens ${CATKIN_DEVEL_PREFIX}/include/xsens
-    && cp ../${PROJECT_NAME}_src/mtsdk/shared_object/include/xsensdeviceapi.h ${CATKIN_DEVEL_PREFIX}/include/xsens
-    && cp ../${PROJECT_NAME}_src/mtsdk/shared_object/include/xstypes.h ${CATKIN_DEVEL_PREFIX}/include/xsens
-    && cp -r ../${PROJECT_NAME}_src/mtsdk/shared_object/lib/ ${CATKIN_DEVEL_PREFIX}
+    && cp -r ../${PROJECT_NAME}_src/mtsdk/include/xsens ${CATKIN_DEVEL_PREFIX}/include/xsens
+    && cp ../${PROJECT_NAME}_src/mtsdk/include/xsensdeviceapi.h ${CATKIN_DEVEL_PREFIX}/include/xsens
+    && cp ../${PROJECT_NAME}_src/mtsdk/include/xstypes.h ${CATKIN_DEVEL_PREFIX}/include/xsens
+    && cp -r ../${PROJECT_NAME}_src/mtsdk/lib/ ${CATKIN_DEVEL_PREFIX}
 )
 
 ##################
